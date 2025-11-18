@@ -1,11 +1,13 @@
 import pandas as pd
 import os
+import joblib
 import numpy as np
 from src.logger import get_logger
 from src.custom_exception import CustomException
 from sklearn.preprocessing import LabelEncoder
 from sklearn.model_selection import train_test_split
 from utils.helpers import Loader
+from config.paths_config import *
 
 logger = get_logger(__name__)
 
@@ -89,6 +91,9 @@ class DataProcessing:
 
             X = self.df.drop("RainTomorrow", axis = 1)
             y = self.df["RainTomorrow"]
+
+            logger.info(f"Input Features :{X.columns}")
+
             X_train, X_test, y_train, y_test = train_test_split(X, y, test_size = 0.2, random_state = 42)
 
             joblib.dump(X_train, X_TRAIN_PATH)

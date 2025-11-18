@@ -6,3 +6,4 @@ seaborn
 kagglehub
 joblib
 xgboost
+flask

@@ -40,6 +40,19 @@ class Loader:
             logger.error(f"Failed to load processed data: {e}")
             raise CustomException("Error while loading processed data", e)
         
+
+    @staticmethod
+    def load_model(model_path : str):
+        """Load model from atrifacts dir."""
+        try:
+    
+            model = joblib.load(model_path)
+            logger.info("Model loaded successfully.")
+            return model
+        
+        except Exception as e:
+            logger.error(f"Failed to load model : {e}")
+            raise CustomException("Error while loading model", e)
     
 
             
